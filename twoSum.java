@@ -16,4 +16,24 @@ public class twoSum {
 
         return new int[]{}; // No solution found
     }
+
+    
+    public int[] twoSum2(int[] nums, int target) {
+        HashMap<Integer,Integer> numsMap = new HashMap<Integer,Integer>();
+        int complement;
+        int[] results = new int[2];
+        for(int i=0;i<nums.length;i++){
+            complement= target - nums[i];
+            if(numsMap.containsKey(nums[i])){
+                results[0] = numsMap.get(nums[i]);
+                results[1] = i;
+                return results;
+            }
+            else{
+                numsMap.put(complement, i);
+            }
+        }
+        return results;
+
+    }
 }
