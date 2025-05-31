@@ -1,0 +1,22 @@
+public class oddEvenLinkedList{
+     public ListNode oddEvenList(ListNode head) {
+        if (head == null || head.next == null) return head;
+
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = even; // Save head of even list to connect at the end
+
+        while (even != null && even.next != null) {
+            odd.next = even.next;
+            odd = odd.next;
+
+            even.next = odd.next;
+            even = even.next;
+        }
+
+        // Connect odd list end to even list start
+        odd.next = evenHead;
+
+        return head;
+    }
+}
